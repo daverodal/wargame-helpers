@@ -11,6 +11,7 @@
   },
   "author": "David M. Rodal",
   "email": "dave.rodal@gmail.com",
+  "url": "https://github.com/daverodal",
   "license": "ISC",
   "dependencies": {
     "serialize-javascript": ">=2.1.1"
