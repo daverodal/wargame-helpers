@@ -1,6 +1,6 @@
 {
   "name": "@markarian/wargame-helpers",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Wargame helper package",
   "main": "./dist/index.js",
   "scripts": {
@@ -9,6 +9,9 @@
     "bundle": "bili --bundle-node-modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist/*"
+  ],
   "author": "David M. Rodal",
   "email": "dave.rodal@gmail.com",
   "url": "https://github.com/daverodal",
