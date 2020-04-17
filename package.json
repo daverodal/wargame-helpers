@@ -1,6 +1,6 @@
 {
   "name": "@markarian/wargame-helpers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wargame helper package",
   "main": "./dist/index.js",
   "scripts": {
@@ -12,6 +12,9 @@
   "author": "David M. Rodal",
   "email": "dave.rodal@gmail.com",
   "license": "ISC",
+  "dependencies": {
+    "serialize-javascript": ">=2.1.1"
+  },
   "devDependencies": {
     "bili": "^4.9.0",
     "rollup-plugin-vue": "^5.1.6",
