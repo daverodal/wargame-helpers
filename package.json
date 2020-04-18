@@ -1,6 +1,6 @@
 {
   "name": "@markarian/wargame-helpers",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Wargame helper package",
   "main": "./dist/index.js",
   "scripts": {
