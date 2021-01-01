@@ -28,6 +28,8 @@ export  class Sync {
         this.fetchTimes = [];
         this.animate = false;
         this.fetched = false;
+        this.initCallback = null;
+        this.completeCallback = null;
 
     }
 
@@ -37,6 +39,14 @@ export  class Sync {
     register(name, callback) {
         this.callbacks[name] = callback;
         this.lengths[name] = 0;
+    }
+
+    registerInit(callback) {
+        this.initCallback = callback;
+    }
+
+    registerComplete(callback) {
+        this.completeCallback = callback;
     }
 
     fetch(last_seq, args) {
@@ -94,6 +104,9 @@ export  class Sync {
                         window.location = data.forward;
                         return;
                     }
+                    if(this.initCallback){
+                        this.initCallback(data);
+                    }
                     for (var i in this.callbacks) {
                         if (data[i]) {
                             if ($.isArray(data[i])) {
@@ -105,6 +118,9 @@ export  class Sync {
                                 fetchArgs[i + "Index"] = data[i + "Index"];
                             }
                         }
+                    }
+                    if(this.completeCallback){
+                        this.completeCallback(data);
                     }
                     last_seq = data.last_seq;
                     var msg = '<span title="' + last_seq + '">g</span>';

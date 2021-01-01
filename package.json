@@ -1,6 +1,6 @@
 {
   "name": "@markarian/wargame-helpers",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Wargame helper package",
   "main": "./dist/index.js",
   "scripts": {
@@ -20,9 +20,9 @@
     "serialize-javascript": ">=2.1.1"
   },
   "devDependencies": {
-    "serialize-javascript": ">=2.1.1",
-    "bili": "^4.9.0",
+    "bili": "^4.9.1",
     "rollup-plugin-vue": "^5.1.6",
+    "serialize-javascript": ">=2.1.1",
     "vue-template-compiler": "^2.6.11"
   }
 }
