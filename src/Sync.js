@@ -70,6 +70,7 @@ export  class Sync {
             this.timeFork = false;
             this.timeTravel = false;
         }
+        let gotError = false;
         this.current = $.ajax(
             {
                 url: this.baseUrl + "/" + last_seq + travel,
@@ -77,9 +78,12 @@ export  class Sync {
                 data: theArgs,
 
                 error:  (jqXHR, two, three) => {
+                    console.log("in error ");
+                    gotError = true;
                     //                    jqXHR.abort();
                 },
                 success:  (data, textstatus, jqXHR) => {
+                    console.log("Success " + textstatus);
                     var now = ((new Date()).getTime()) / 1000;
                     this.fetchTimes.push(now);
                     if (this.fetchTimes.length > 10) {
@@ -127,6 +131,7 @@ export  class Sync {
                     $("#comlink").html(msg);
                     $("#comlinkWrapper").css({background: 'lightgreen'})
                     if (!this.timeTravel) {
+                        console.log("fetching ");
                         this.fetch(last_seq, fetchArgs);
                     }
                     if(this.fetched){
@@ -134,8 +139,12 @@ export  class Sync {
                     }
                 },
                 complete: (jq, textstatus) => {
+                    console.log('complete');
                     var now = ((new Date()).getTime()) / 1000;
                     this.fetchTimes.push(now);
+                    if(gotError) {
+                        return;
+                    }
                     // if (this.fetchTimes.length > 10) {
                     //     var then = this.fetchTimes.shift();
                     //     if ((now - then) < 2) {
@@ -143,9 +152,9 @@ export  class Sync {
                     //         return;
                     //     }
                     // }
-
+                    console.log("complete " + textstatus + " " + this.timeTravel);
                     if (textstatus != "success" && !this.timeTravel) {
-                        this.fetch(0);
+                        // this.fetch(0);
                     }
                 }
             });

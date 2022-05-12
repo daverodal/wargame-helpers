@@ -66,7 +66,7 @@ export function muteMe() {
 }
 export function playAudioBuzz() {
     var aud = $('.buzz').get(0);
-    if (aud) {
+    if (aud && !mute) {
         aud.play();
     }
 
